@@ -114,7 +114,7 @@ impl_into!(MultiLineString, EsriPolyline<2>);
 
 impl Into<EsriPolygon<2>> for &Polygon {
     fn into(self) -> EsriPolygon<2> {
-        let rewound = self.orient(Direction::Reversed);
+        let rewound = self;//.orient(Direction::Reversed);
         let rings: Vec<EsriLineString<2>> = rewound
             .rings()
             .map(Into::<EsriLineString<2>>::into)
@@ -132,7 +132,7 @@ impl_into!(Polygon, EsriPolygon<2>);
 
 impl Into<EsriPolygon<2>> for &MultiPolygon {
     fn into(self) -> EsriPolygon<2> {
-        let rewound = self.orient(Direction::Reversed);
+        let rewound = self;//.orient(Direction::Reversed);
         let rings = rewound
             .rings()
             .map(Into::<EsriLineString<2>>::into)
